@@ -1,4 +1,5 @@
-﻿using RichDomainModeling.Shared.ValueObjects;
+﻿using Flunt.Validations;
+using RichDomainModeling.Shared.ValueObjects;
 
 namespace RichDomainModeling.Domain.ValueObjects
 {
@@ -9,11 +10,12 @@ namespace RichDomainModeling.Domain.ValueObjects
             FirstName = firstName;
             LastName = lastName;
 
-            if (string.IsNullOrEmpty(FirstName))
-                AddNotification("Name.FirstName", "Invalid name!");
+            AddNotifications(new Contract<Name>()
+                .Requires()
+                .IsGreaterThan(FirstName, 3, "Name.FirstName", "Name must contain at least 3 characters")
+                .IsGreaterThan(LastName, 3, "Name.LastName", "Last Name must contain at least 3 caracters")
+                .IsLowerThan(FirstName, 40, "Name.FirstName", "Name must contain a maximum of 40 caracters"));
 
-            if (string.IsNullOrEmpty(LastName))
-                AddNotification("Name.LastName", "Invalid last name!");
         }
 
         public string FirstName { get; private set; }

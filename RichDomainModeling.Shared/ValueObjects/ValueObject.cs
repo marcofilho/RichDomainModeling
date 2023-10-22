@@ -2,7 +2,7 @@
 
 namespace RichDomainModeling.Shared.ValueObjects
 {
-    public class ValueObject : Notifiable<Notification>
+    public abstract class ValueObject : Notifiable<Notification>
     {
     }
 }

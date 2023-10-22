@@ -1,4 +1,6 @@
-﻿using RichDomainModeling.Shared.Entities;
+﻿using Flunt.Validations;
+using RichDomainModeling.Shared.Entities;
+using System.Diagnostics.Contracts;
 
 namespace RichDomainModeling.Domain.Entities
 {
@@ -21,6 +23,10 @@ namespace RichDomainModeling.Domain.Entities
 
         public void AddPayment(Payment payment)
         {
+            AddNotifications(new Contract<Subscription>().
+                Requires().
+                IsGreaterThan(DateTime.Now, payment.PaidDate, "Subscription.Payments", "The payment date must has be in the future."));
+
             _payments.Add(payment);
         }
 

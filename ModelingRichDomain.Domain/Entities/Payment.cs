@@ -1,8 +1,10 @@
-﻿using RichDomainModeling.Domain.ValueObjects;
+﻿using Flunt.Validations;
+using RichDomainModeling.Domain.ValueObjects;
+using RichDomainModeling.Shared.Entities;
 
 namespace RichDomainModeling.Domain.Entities
 {
-    public abstract class Payment
+    public abstract class Payment : BaseEntity
     {
         protected Payment(DateTime paidDate, DateTime expireDate, decimal total, decimal totalPaid, Document document, Address address, Email email)
         {
@@ -14,6 +16,11 @@ namespace RichDomainModeling.Domain.Entities
             Document = document;
             Address = address;
             Email = email;
+
+            AddNotifications(new Contract<Payment>()
+                .Requires()
+                .IsGreaterThan(0, Total, "Payment.Total", "The total value must not be zero")
+                .IsLowerOrEqualsThan(Total, TotalPaid, "Payment.TotalPaid", "The paid value is lower than the payment value"));
         }
 
         public string Number { get; private set; }
