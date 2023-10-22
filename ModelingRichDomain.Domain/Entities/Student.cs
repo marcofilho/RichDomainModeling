@@ -1,4 +1,5 @@
-﻿using RichDomainModeling.Domain.ValueObjects;
+﻿using Flunt.Validations;
+using RichDomainModeling.Domain.ValueObjects;
 using RichDomainModeling.Shared.Entities;
 using System.Diagnostics.Contracts;
 
@@ -41,8 +42,11 @@ namespace RichDomainModeling.Domain.Entities
                     hasSubscriptionActive = true;
             }
 
-            if (hasSubscriptionActive)
-                AddNotification("Student.Subscriptions", "You already have an active subscription");
+            AddNotifications(new Contract<Student>()
+                .Requires()
+                .IsFalse(hasSubscriptionActive, "Student.Subscriptions", "You already have an active subscription")
+                .AreEquals(0, subscription.Payments.Count, "Student.Subscription.Payments", "This signature has no payments")
+            );
         }
     }
 }

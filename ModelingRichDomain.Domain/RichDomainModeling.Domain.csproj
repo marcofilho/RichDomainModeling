@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RichDomainModeling.Shared\RichDomainModeling.Shared.csproj" />
-    <ProjectReference Include="..\RichDomainModeling.Tests\RichDomainModeling.Tests.csproj" />
   </ItemGroup>
 
 </Project>

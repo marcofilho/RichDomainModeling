@@ -19,8 +19,8 @@ namespace RichDomainModeling.Domain.Entities
 
             AddNotifications(new Contract<Payment>()
                 .Requires()
-                .IsGreaterThan(0, Total, "Payment.Total", "The total value must not be zero")
-                .IsLowerOrEqualsThan(Total, TotalPaid, "Payment.TotalPaid", "The paid value is lower than the payment value"));
+                .IsLowerOrEqualsThan(0, Total, "Payment.Total", "The total value must not be zero")
+                .IsGreaterOrEqualsThan(Total, TotalPaid, "Payment.TotalPaid", "The paid value is lower than the payment value"));
         }
 
         public string Number { get; private set; }

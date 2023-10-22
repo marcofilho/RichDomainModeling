@@ -17,4 +17,9 @@
     <PackageReference Include="coverlet.collector" Version="3.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ModelingRichDomain.Domain\RichDomainModeling.Domain.csproj" />
+    <ProjectReference Include="..\RichDomainModeling.Shared\RichDomainModeling.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

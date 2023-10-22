@@ -8,9 +8,18 @@ namespace RichDomainModeling.Domain.Entities
     {
         private IList<Payment> _payments;
 
+        public Subscription(DateTime? expireDate)
+        {
+            CreateDate = DateTime.UtcNow;
+            LastUpdateDate = DateTime.UtcNow;
+            ExpireDate = expireDate;
+            IsActive = true;
+            _payments = new List<Payment>();
+        }
+
         public DateTime CreateDate { get; private set; }
         public DateTime LastUpdateDate { get; private set; }
-        public DateTime ExpireDate { get; private set; }
+        public DateTime? ExpireDate { get; private set; }
         public bool IsActive { get; private set; }
 
         public IReadOnlyCollection<Payment> Payments
