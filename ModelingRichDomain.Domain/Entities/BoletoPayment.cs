@@ -4,12 +4,14 @@ namespace RichDomainModeling.Domain.Entities
 {
     public class BoletoPayment : Payment
     {
-        public BoletoPayment(string barCode,
+        public BoletoPayment(
+            string barCode,
             string boletoNumber,
             DateTime paidDate,
             DateTime expireDate,
             decimal total,
             decimal totalPaid,
+            string payer,
             Document document,
             Address address,
             Email email) : base(
@@ -17,6 +19,7 @@ namespace RichDomainModeling.Domain.Entities
                 expireDate,
                 total,
                 totalPaid,
+                payer,
                 document,
                 address,
                 email)
