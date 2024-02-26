@@ -13,7 +13,7 @@ namespace RichDomainModeling.Domain.Entities
             ExpireDate = expireDate;
             Total = total;
             TotalPaid = totalPaid;
-            Payer = payer,
+            Payer = payer;
             Document = document;
             Address = address;
             Email = email;

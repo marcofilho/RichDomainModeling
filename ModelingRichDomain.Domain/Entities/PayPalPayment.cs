@@ -17,6 +17,7 @@ namespace RichDomainModeling.Domain.Entities
                 expireDate,
                 total,
                 totalPaid,
+                payer,
                 document,
                 address,
                 email)
